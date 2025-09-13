@@ -426,7 +426,7 @@ const RAW_RUNTIME_STATE =
           ["@deck.gl/widgets", "virtual:8e15f3f592d5674dc7bb3d3c78813882e9384b466b25706224038ee36a3d8c4f35f1ebcaf5f282b47ebce33f0bf818a686e8146ec8fb1733efbd7d8ebadbbb27#npm:9.1.14"],\
           ["@deck.gl/core", "npm:9.1.14"],\
           ["@types/deck.gl__core", null],\
-          ["preact", "npm:10.27.1"]\
+          ["preact", "npm:10.27.2"]\
         ],\
         "packagePeers": [\
           "@deck.gl/core",\
@@ -3849,10 +3849,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["preact", [\
-      ["npm:10.27.1", {\
-        "packageLocation": "../../../.yarn/berry/cache/preact-npm-10.27.1-1ad8af53de-10c0.zip/node_modules/preact/",\
+      ["npm:10.27.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/preact-npm-10.27.2-d575c92ce0-10c0.zip/node_modules/preact/",\
         "packageDependencies": [\
-          ["preact", "npm:10.27.1"]\
+          ["preact", "npm:10.27.2"]\
         ],\
         "linkType": "HARD"\
       }]\
