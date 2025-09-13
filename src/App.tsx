@@ -19,21 +19,46 @@ const App: React.FC = () => {
 
   return (
     <div className="game-container">
-      <GameHeader score={gameState.score} zoom={gameState.currentZoom} />
+      <div className="game-sidebar">
+        <GameHeader score={gameState.score} zoom={gameState.currentZoom} />
 
-      <div className="instructions">
-        Study the map and type your guess below. Each wrong guess zooms out.<br />
-        <strong>Scoring:</strong> Country = 1pt | Province = 2pts | City = 3pts | Point of Interest = 5pts
-      </div>
+        <div className="instructions">
+          Study the map and type your guess below. Each wrong guess zooms out.<br />
+          <strong>Scoring:</strong> Country = 1pt | Province = 2pts | City = 3pts | Point of Interest = 5pts
+        </div>
 
-      <div className="label-toggle-container">
-        <LabelToggle
-          showLabels={gameState.showLabels}
-          onToggle={toggleLabels}
+        <div className="toggles-container">
+          <LabelToggle
+            showLabels={gameState.showLabels}
+            onToggle={toggleLabels}
+          />
+          <MapStyleToggle
+            mapStyle={gameState.mapStyle}
+            onToggle={toggleMapStyle}
+          />
+        </div>
+
+        <GuessInput
+          onGuess={handleGuess}
+          gameActive={gameState.gameActive}
+          feedback={feedback}
         />
-        <MapStyleToggle
-          mapStyle={gameState.mapStyle}
-          onToggle={toggleMapStyle}
+
+        <GuessedItems
+          targetLocation={gameState.targetLocation}
+          guessedItems={gameState.guessedItems}
+          currentScore={gameState.score}
+          showLabels={gameState.showLabels}
+          revealedCategories={gameState.revealedCategories}
+          onToggleReveal={toggleRevealCategory}
+        />
+
+        <GuessHistory guessHistory={gameState.guessHistory} />
+
+        <GameControls
+          onNewGame={startNewGame}
+          onGiveUp={giveUp}
+          gameActive={gameState.gameActive}
         />
       </div>
 
@@ -48,29 +73,6 @@ const App: React.FC = () => {
           onZoomOut={() => {}}
         />
       </div>
-
-      <GuessInput
-        onGuess={handleGuess}
-        gameActive={gameState.gameActive}
-        feedback={feedback}
-      />
-
-      <GuessedItems
-        targetLocation={gameState.targetLocation}
-        guessedItems={gameState.guessedItems}
-        currentScore={gameState.score}
-        showLabels={gameState.showLabels}
-        revealedCategories={gameState.revealedCategories}
-        onToggleReveal={toggleRevealCategory}
-      />
-
-      <GuessHistory guessHistory={gameState.guessHistory} />
-
-      <GameControls
-        onNewGame={startNewGame}
-        onGiveUp={giveUp}
-        gameActive={gameState.gameActive}
-      />
     </div>
   );
 };

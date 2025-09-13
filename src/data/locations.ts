@@ -122,7 +122,7 @@ export const locations: Location[] = [
     name: "Dubai, UAE",
     city: "dubai",
     country: "uae",
-    pointsOfInterest: ["persian gulf", "dubai creek"]
+    pointsOfInterest: ["persian gulf", "dubai creek", "al wasl", "zabeel"]
   },
   {
     lat: 1.3521, lng: 103.8198,

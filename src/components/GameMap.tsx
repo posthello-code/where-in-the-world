@@ -18,8 +18,8 @@ const GameMap: React.FC<GameMapProps> = ({ targetLocation, zoom, gameActive, sho
 
   const getMapStyleUrl = useCallback(() => {
     if (mapStyle === 'satellite') {
-      // Create a simple satellite style for MapLibre
-      return {
+      // Create satellite style with optional label overlay
+      const satelliteStyle = {
         "version": 8,
         "sources": {
           "satellite": {
@@ -38,6 +38,29 @@ const GameMap: React.FC<GameMapProps> = ({ targetLocation, zoom, gameActive, sho
           }
         ]
       };
+
+      // Add label overlay when labels are enabled
+      if (showLabels) {
+        satelliteStyle.sources.labels = {
+          "type": "raster",
+          "tiles": [
+            "https://tiles.stadiamaps.com/tiles/stamen_toner_labels/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256,
+          "attribution": "© Stadia Maps © Stamen Design © OpenMapTiles © OpenStreetMap contributors"
+        };
+
+        satelliteStyle.layers.push({
+          "id": "labels",
+          "type": "raster",
+          "source": "labels",
+          "paint": {
+            "raster-opacity": 0.9
+          }
+        });
+      }
+
+      return satelliteStyle;
     }
 
     // CartoDB street map

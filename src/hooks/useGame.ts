@@ -5,11 +5,11 @@ import { locations } from '../data/locations';
 export const useGame = () => {
   const [gameState, setGameState] = useState<GameState>({
     score: 0,
-    currentZoom: 19,
+    currentZoom: 18,
     gameActive: false,
     targetLocation: null,
     showLabels: false, // Labels off by default
-    mapStyle: 'street', // Default to street map
+    mapStyle: 'satellite', // Default to satellite map
     guessedItems: {
       pointsOfInterest: [],
     },
@@ -123,7 +123,7 @@ export const useGame = () => {
     const newLocation = generateRandomLocation();
     setGameState(prev => ({
       score: 0,
-      currentZoom: 19,
+      currentZoom: 18,
       gameActive: true,
       targetLocation: newLocation,
       showLabels: false, // Reset labels on new game
